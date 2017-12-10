@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}Guess The Number - Guess{% endblock %}
+
+{% block page_header %}
+<a href="{{ url_for('index') }}" style="text-decoration: none; color: #666">
+    <h1>Guess The Number</h1>
+</a>
+{% endblock %}
+
+{% block page_content %}
+<br>
+<form class="form" action="{{ url_for('guess') }}" method="POST">
+    {{ form.csrf_token }}
+    {{ wtf.form_field(form.number, autocomplete='off', autofocus='autofocus') }}
+    {{ wtf.form_field(form.submit) }}
+</form>
+{% endblock %}
